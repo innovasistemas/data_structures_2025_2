@@ -71,6 +71,7 @@ public class MainMenu
     {
         String option, chain;
         Strings str = new Strings();
+        Palindrome palin = new Palindrome();
 
         do {
             System.out.println("");
@@ -97,9 +98,16 @@ public class MainMenu
                     System.out.print("Ingrese un texto: ");
                     chain = input.nextLine();
                     str.showString(chain);
+                    palin.setText(chain);
                     break;
                 case "3":
                     // Palíndromo
+                    System.out.println("Frase sin espacios: " + palin.deleteSpaces());
+                    if (palin.compareCharacters()) {
+                        System.out.println(palin.getText() + " es palíndromo");
+                    } else {
+                        System.out.println(palin.getText() + " no es palíndromo");
+                    }
                     break;
                 case "4":
                     // Decimal a romano
