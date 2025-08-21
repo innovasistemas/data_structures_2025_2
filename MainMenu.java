@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import com.packages.string_java.*;
+import com.packages.arrays.*;
 
 
 public class MainMenu 
@@ -41,7 +42,7 @@ public class MainMenu
                 ANSI_RESET);
             System.out.println("0. Salir");
             System.out.println("1. Cadenas de caracteres");
-            System.out.println("2. Arreglos");
+            System.out.println("2. Vectores");
             System.out.println("3. Listas ligadas");
             System.out.println("4. Pilas y colas");
             System.out.println("5. Recursividad");
@@ -56,6 +57,9 @@ public class MainMenu
                 case "1":
                     // Llamar a algún método para el submenú cadenas
                     menuStrings();
+                    break;
+                case "2":
+                    menuVectors();
                     break;
                 default:
                     System.out.println();
@@ -114,8 +118,62 @@ public class MainMenu
                     System.out.print("Ingrese un número entre 1 y 3999: ");
                     int number = input.nextInt();
                     input.nextLine(); // Limpiar el buffer
-                    System.out.println(String.valueOf(number) + " = " + 
-                        Romans.toRoman(number));
+                    System.out.println(number + " => " + DecimalToRoman.decimalToRoman(number));
+                    // System.out.println(String.valueOf(number) + " = " + 
+                    //     Romans.toRoman(number));
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+
+    public static void menuVectors()
+    {
+        String option;
+        int datum;
+        Vector v = new Vector();
+
+        do {
+            System.out.println("");
+            System.out.println("------------------------------");
+            System.out.println("       Submenú Vectores");
+            System.out.println("------------------------------");
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar dato");
+            System.out.println("2. Mostrar");
+            System.out.println("3. Buscar");
+            System.out.println("4. Modificar");
+            System.out.println("5. Eliminar");
+            System.out.println("6. Insertar");
+            System.out.println("7. Ordenar");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    if (v.getN() < 20) {
+                        System.out.print("Ingrese un número entero: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        v.addVector(datum);
+                    } else {
+                        System.out.println("Vector lleno: desbordamiento");
+                    }
+                    break;
+                case "2":
+                    if (v.getN() > 0) {
+                        v.showVector();
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "3":
+                    break;
+                case "4":
                     break;
                 default:
                     System.out.println("Opción no válida");

@@ -1,3 +1,5 @@
+package com.packages.string_java;
+
 public class Palindrome 
 {
     private String text;
