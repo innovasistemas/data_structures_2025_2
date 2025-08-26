@@ -44,6 +44,40 @@ public class Vector
         }
     }
 
-    
+    public int findVector(int datum)
+    {
+        int i = 0;
+        int pos = -1;
+        while (i < n && pos == -1) {
+            if (vec[i] == datum) {
+                pos = i;
+            } else {
+                i++;
+            }
+        }
+        return pos;
+    }
+
+    public void updateVector(int datum, int pos)
+    {
+        vec[pos] = datum;
+    }
+
+    public void deleteVector(int pos)
+    {
+        for (int i = pos; i < n - 1; i++) {
+            vec[i] = vec[i + 1];
+        }
+        n--;
+    }
+
+    public void insertVector(int datum, int pos)
+    {
+        for (int i = n; i > pos; i--) {
+            vec[i] = vec[i - 1];
+        }
+        vec[pos] = datum;
+        n++;
+    }  
 
 }

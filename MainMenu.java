@@ -133,6 +133,7 @@ public class MainMenu
     {
         String option;
         int datum;
+        int position;
         Vector v = new Vector();
 
         do {
@@ -172,8 +173,73 @@ public class MainMenu
                     }
                     break;
                 case "3":
+                    if (v.getN() > 0) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = v.findVector(datum);
+                        if (position > -1) {
+                            System.out.println("Dato encontrado en posición " + position);
+                        } else {
+                            System.out.println(datum + " no se encuentra en el vector");
+                        }
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
                     break;
                 case "4":
+                    if (v.getN() > 0) {
+                        System.out.print("Dato a modificar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = v.findVector(datum);
+                        if (position > -1) {
+                            System.out.print("Nuevo dato: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            v.updateVector(datum, position);
+                            System.out.println("Dato modificado en posición " + position);
+                        } else {
+                            System.out.println(datum + " no se encuentra en el vector");
+                        }
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "5":
+                    if (v.getN() > 0) {
+                        System.out.print("Dato a eliminar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = v.findVector(datum);
+                        if (position > -1) {
+                            v.deleteVector(position);
+                            System.out.println("Dato eliminado de la posición " + position);
+                        } else {
+                            System.out.println(datum + " no se encuentra en el vector");
+                        }
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
+                case "6":
+                    if (v.getN() < 20) {
+                        System.out.print("Dato referencia para insertar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = v.findVector(datum);
+                        if (position > -1) {
+                            System.out.print("Nuevo dato: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            v.insertVector(datum, position);
+                            System.out.println("Dato insertado en posición " + position);
+                        } else {
+                            System.out.println(datum + " no se encuentra en el vector");
+                        }
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
                     break;
                 default:
                     System.out.println("Opción no válida");
