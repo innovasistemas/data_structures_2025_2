@@ -43,10 +43,11 @@ public class MainMenu
             System.out.println("0. Salir");
             System.out.println("1. Cadenas de caracteres");
             System.out.println("2. Vectores");
-            System.out.println("3. Listas ligadas");
-            System.out.println("4. Pilas y colas");
-            System.out.println("5. Recursividad");
-            System.out.println("6. Árboles y grafos");
+            System.out.println("3. Matrices");
+            System.out.println("4. Listas ligadas");
+            System.out.println("5. Pilas y colas");
+            System.out.println("6. Recursividad");
+            System.out.println("7. Árboles y grafos");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -60,6 +61,9 @@ public class MainMenu
                     break;
                 case "2":
                     menuVectors();
+                    break;
+                case "3":
+                    menuMatrix();
                     break;
                 default:
                     System.out.println();
@@ -239,6 +243,76 @@ public class MainMenu
                         }
                     } else {
                         System.out.println("Vector vacío");
+                    }
+                    break;
+                case "7":
+                    if (v.getN() > 0) {
+                        v.sortVector();
+                        v.showVector();
+                        System.out.println("Vector ordenado");
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;    
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+    public static void menuMatrix()
+    {
+        String option;
+        int numberRows;
+        int numberColumns;
+        Matrix m = new Matrix();
+
+        do {
+            System.out.println("");
+            System.out.println("------------------------------");
+            System.out.println("       Submenú Matrices");
+            System.out.println("------------------------------");
+            System.out.println("0. Regresar");
+            System.out.println("1. Crear");
+            System.out.println("2. Mostrar");
+            System.out.println("3. Diagonal principal");
+            System.out.println("4. Diagonal secundaria");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    System.out.print("Número filas: ");
+                    numberRows = input.nextInt();
+                    input.nextLine();
+                    System.out.print("Número columnas: ");
+                    numberColumns = input.nextInt();
+                    input.nextLine();
+                    m.setM(numberRows);
+                    m.setN(numberColumns);
+                    m.fillMatrix();
+                    break;
+                case "2":
+                    if (m.getM() > 0 && m.getN() > 0) {
+                        m.showMatrix();
+                    } else {
+                        System.out.println("Especifique el tamaño de la matriz");
+                    }
+                    break;
+                case "3":
+                    if (m.getM() > 0 && m.getM() == m.getN()) {
+                        m.mainDiagonal();
+                    } else {
+                        System.out.println("Especifique el tamaño de la matriz");
+                    }
+                    break;
+                case "4":
+                    if (m.getM() > 0 && m.getM() == m.getN()) {
+                        m.secondaryDiagonal();
+                    } else {
+                        System.out.println("Tamaño de la matriz no válido para esta operación");
                     }
                     break;
                 default:
