@@ -277,6 +277,7 @@ public class MainMenu
             System.out.println("2. Mostrar");
             System.out.println("3. Diagonal principal");
             System.out.println("4. Diagonal secundaria");
+            System.out.println("5. Triangular inferior secundaria");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -311,6 +312,13 @@ public class MainMenu
                 case "4":
                     if (m.getM() > 0 && m.getM() == m.getN()) {
                         m.secondaryDiagonal();
+                    } else {
+                        System.out.println("Tamaño de la matriz no válido para esta operación");
+                    }
+                    break;
+                case "5":
+                    if (m.getM() > 0 && m.getM() == m.getN()) {
+                        m.lowerTriangularSecondary();
                     } else {
                         System.out.println("Tamaño de la matriz no válido para esta operación");
                     }

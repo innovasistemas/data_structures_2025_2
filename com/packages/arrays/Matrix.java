@@ -76,5 +76,15 @@ public class Matrix
         System.out.println();
     }
 
+    public void lowerTriangularSecondary()
+    {
+        for (int i = 1; i < n; i++) {
+            for (int j = n - i; j < n; j++) {
+                System.out.print(mat[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
     
 }
