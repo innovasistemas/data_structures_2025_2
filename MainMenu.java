@@ -278,6 +278,11 @@ public class MainMenu
             System.out.println("3. Diagonal principal");
             System.out.println("4. Diagonal secundaria");
             System.out.println("5. Triangular inferior secundaria");
+            System.out.println("6. Triángulo arriba");
+            System.out.println("7. Suma columna");
+            System.out.println("8. Promedio columna");
+            System.out.println("9. Varianza columna");
+            System.out.println("10. Desviación columna");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -319,6 +324,53 @@ public class MainMenu
                 case "5":
                     if (m.getM() > 0 && m.getM() == m.getN()) {
                         m.lowerTriangularSecondary();
+                    } else {
+                        System.out.println("Tamaño de la matriz no válido para esta operación");
+                    }
+                    break;
+                case "6":
+                    if (m.getM() > 0 && m.getN() > 0) {
+                        m.triangleSup();
+                    } else {
+                        System.out.println("Tamaño de la matriz no válido para esta operación");
+                    }
+                    break;
+                case "7":
+                    if (m.getM() > 0 && m.getN() > 0) {
+                        System.out.print("Columna: ");
+                        numberColumns = input.nextInt();
+                        input.nextLine();
+                        System.out.println("Suma columna " + numberColumns + ": " + m.sumSalaryMonth(numberColumns));
+                    } else {
+                        System.out.println("Tamaño de la matriz no válido para esta operación");
+                    }
+                    break;
+                case "8":
+                    if (m.getM() > 0 && m.getN() > 0) {
+                        System.out.print("Columna: ");
+                        numberColumns = input.nextInt();
+                        input.nextLine();
+                        System.out.println("Promedio columna " + numberColumns + ": " + m.avgSalaryMonth(numberColumns));
+                    } else {
+                        System.out.println("Tamaño de la matriz no válido para esta operación");
+                    }
+                    break;
+                case "9":
+                    if (m.getM() > 0 && m.getN() > 0) {
+                        System.out.print("Columna: ");
+                        numberColumns = input.nextInt();
+                        input.nextLine();
+                        System.out.println("Varianza columna " + numberColumns + ": " + m.variance(numberColumns));
+                    } else {
+                        System.out.println("Tamaño de la matriz no válido para esta operación");
+                    }
+                    break;
+                case "10":
+                    if (m.getM() > 0 && m.getN() > 0) {
+                        System.out.print("Columna: ");
+                        numberColumns = input.nextInt();
+                        input.nextLine();
+                        System.out.println("Desviación columna " + numberColumns + ": " + m.desviation(numberColumns));
                     } else {
                         System.out.println("Tamaño de la matriz no válido para esta operación");
                     }

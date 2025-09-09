@@ -86,5 +86,44 @@ public class Matrix
         }
     }
 
+    public void triangleSup()
+    {
+        int f = m % 2 == 0 ? m / 2 - 1: m / 2;
+        for (int i = 0; i <= f; i++) {
+            for (int j = i; j < n - i; j++) {
+                System.out.print(mat[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+    public double sumSalaryMonth(int column)
+    {
+        double s = 0;
+        for (int i = 0; i < m; i++) {
+            s += mat[i][column];
+        }
+        return s;
+    }
+
+    public double avgSalaryMonth(int column) 
+    {
+        return sumSalaryMonth(column) / m;
+    }
+
+    public double variance(int column)
+    {
+        double s = 0;
+        double p = avgSalaryMonth(column);
+        for (int i = 0; i < m; i++) {
+            s += Math.pow(mat[i][column] - p, 2);
+        }
+        return s / (m - 1);
+    }
+
+    public double desviation(int column) 
+    {
+        return Math.sqrt(variance(column));
+    }
     
 }
