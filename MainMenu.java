@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import com.packages.string_java.*;
 import com.packages.arrays.*;
+import com.packages.linked_list.*;
 
 
 public class MainMenu 
@@ -44,10 +45,11 @@ public class MainMenu
             System.out.println("1. Cadenas de caracteres");
             System.out.println("2. Vectores");
             System.out.println("3. Matrices");
-            System.out.println("4. Listas ligadas");
-            System.out.println("5. Pilas y colas");
-            System.out.println("6. Recursividad");
-            System.out.println("7. Árboles y grafos");
+            System.out.println("4. Registros");
+            System.out.println("5. Listas ligadas");
+            System.out.println("6. Pilas y colas");
+            System.out.println("7. Recursividad");
+            System.out.println("8. Árboles y grafos");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -64,6 +66,12 @@ public class MainMenu
                     break;
                 case "3":
                     menuMatrix();
+                    break;
+                case "4":
+                    menuRecords();
+                    break;
+                case "5":
+                    menuLinkedList();
                     break;
                 default:
                     System.out.println();
@@ -373,6 +381,93 @@ public class MainMenu
                         System.out.println("Desviación columna " + numberColumns + ": " + m.desviation(numberColumns));
                     } else {
                         System.out.println("Tamaño de la matriz no válido para esta operación");
+                    }
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+    public static void menuRecords()
+    {
+        String option;
+        Record r = new Record();
+        String id;
+        String name;
+        byte age;
+        boolean study;
+        
+        do {
+            System.out.println("");
+            System.out.println("------------------------------");
+            System.out.println("       Submenú Registros");
+            System.out.println("------------------------------");
+            System.out.println("0. Regresar");
+            System.out.println("1. Crear");
+            System.out.println("2. Mostrar");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    System.out.print("Identificación: ");
+                    id = input.nextLine();
+                    System.out.print("Nombre: ");
+                    name = input.nextLine();
+                    System.out.print("Edad: ");
+                    age = input.nextByte();
+                    input.nextLine();
+                    System.out.print("Estudia [true/false]: ");
+                    study = input.nextBoolean();
+                    r.addPerson(id, name, age, study);
+                    break;
+                case "2":
+                    if (r.getN() > 0) {
+                       r.showPersons();
+                    } else {
+                        System.out.println("No hay personas");
+                    }
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+    public static void menuLinkedList()
+    {
+        String option;
+        int datum;
+        LinkedSimplyList lsl = new LinkedSimplyList();
+
+        do {
+            System.out.println("");
+            System.out.println("----------------------------------");
+            System.out.println("       Submenú Listas Ligadas");
+            System.out.println("----------------------------------");
+            System.out.println("0. Regresar");
+            System.out.println("1. Agregar nodo");
+            System.out.println("2. Mostrar lista");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    System.out.print("Dato: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    lsl.createBeginLSL(datum);
+                    break;
+                case "2":
+                    if (lsl.head != null) {
+                       lsl.showLSL();
+                    } else {
+                        System.out.println("No hay nodos");
                     }
                     break;
                 default:
