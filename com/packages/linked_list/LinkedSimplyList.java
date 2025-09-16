@@ -88,16 +88,33 @@ public class LinkedSimplyList
         return sw;
     }
 
-    public void insertBeforeNode(int datum, int datumRef)
+    public boolean insertBeforeNode(int datum, int datumRef)
     {
-        if (head.info == datumRef ) {
-            Node p = new Node();
+        Node p, q, r;
+        boolean sw = false;
+        if (head.info == datumRef) {
+            p = new Node();
             p.info = datum;
             p.link = head;
             head = p;
+            sw = true;
         } else {
-
+            p = head.link;
+            q = head;
+            while (p != null && !sw) {
+                if (p.info == datumRef) {
+                    r = new Node();
+                    r.info = datum;
+                    q.link = r;
+                    r.link = p;
+                    sw = true;
+                } else {
+                    q = q.link;
+                    p = p.link; 
+                }
+            }
         }
+        return sw;
     }
     
 }

@@ -440,7 +440,7 @@ public class MainMenu
     public static void menuLinkedList()
     {
         String option;
-        int datum;
+        int datum, datumRef;
         Node q;
         LinkedSimplyList lsl = new LinkedSimplyList();
 
@@ -456,6 +456,7 @@ public class MainMenu
             System.out.println("4. Buscar nodo (puntero -nodo-)");
             System.out.println("5. Modificar nodo");
             System.out.println("6. Eliminar nodo");
+            System.out.println("7. Insertar nodo antes");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -532,6 +533,23 @@ public class MainMenu
                             System.out.print("Nodo eliminado");
                         } else {
                             System.out.println("El dato no está en la LSL");
+                        }
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "7":
+                    if (lsl.head != null) {
+                        System.out.print("Dato de referencia: ");
+                        datumRef = input.nextInt();
+                        input.nextLine();
+                        System.out.print("Dato a insertar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        if (lsl.insertBeforeNode(datum, datumRef)) {
+                            System.out.print("Nodo insertado");
+                        } else {
+                            System.out.println("El dato de referencia no está en la LSL");
                         }
                     } else {
                         System.out.println("No hay nodos");
