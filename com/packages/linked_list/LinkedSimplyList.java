@@ -90,13 +90,13 @@ public class LinkedSimplyList
 
     public void insertBeforeNode(int datum, int datumRef)
     {
-        if (head.info == datumRef) {
+        if (head.info == datumRef ) {
             Node p = new Node();
             p.info = datum;
             p.link = head;
             head = p;
         } else {
-            
+
         }
     }
     
