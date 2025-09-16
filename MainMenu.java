@@ -441,6 +441,7 @@ public class MainMenu
     {
         String option;
         int datum;
+        Node q;
         LinkedSimplyList lsl = new LinkedSimplyList();
 
         do {
@@ -451,6 +452,10 @@ public class MainMenu
             System.out.println("0. Regresar");
             System.out.println("1. Agregar nodo");
             System.out.println("2. Mostrar lista");
+            System.out.println("3. Buscar nodo (booleano)");
+            System.out.println("4. Buscar nodo (puntero -nodo-)");
+            System.out.println("5. Modificar nodo");
+            System.out.println("6. Eliminar nodo");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -465,7 +470,69 @@ public class MainMenu
                     break;
                 case "2":
                     if (lsl.head != null) {
-                       lsl.showLSL();
+                        lsl.showLSL();
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "3":
+                    if (lsl.head != null) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        if (lsl.searchNode(datum)) {
+                            System.out.println("El dato está en la LSL");
+                        } else {
+                            System.out.println("El dato no está en la LSL");
+                        }
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "4":
+                    if (lsl.head != null) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        q = lsl.searchNode((long)datum);
+                        if (q != null ) {
+                            System.out.println("El dato está en la LSL en la dirección " + q);
+                        } else {
+                            System.out.println("El dato no está en la LSL");
+                        }
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "5":
+                    if (lsl.head != null) {
+                        System.out.print("Dato a modificar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        q = lsl.searchNode((long)datum);
+                        if (q != null ) {
+                            System.out.print("Nuevo dato: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            lsl.updateNode(q, datum);
+                            System.out.println("El nodo se actualizó");
+                        } else {
+                            System.out.println("El dato no está en la LSL");
+                        }
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "6":
+                    if (lsl.head != null) {
+                        System.out.print("Dato a eliminar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        if (lsl.deleteNode(datum)) {
+                            System.out.print("Nodo eliminado");
+                        } else {
+                            System.out.println("El dato no está en la LSL");
+                        }
                     } else {
                         System.out.println("No hay nodos");
                     }
