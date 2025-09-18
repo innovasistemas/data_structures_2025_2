@@ -58,6 +58,27 @@ public class Vector
         return pos;
     }
 
+    public int binarySearch(int datum)
+    {
+        int lowerLimit, upperLimit, pos, centralPos;
+        lowerLimit = 0;
+        upperLimit = n;
+        pos = -1;
+        while (lowerLimit <= upperLimit && pos == -1) {
+            centralPos = (lowerLimit + upperLimit) / 2;
+            if (vec[centralPos] == datum) {
+                pos = centralPos;
+            } else {
+                if (datum > vec[centralPos]) {
+                    lowerLimit = centralPos + 1;
+                } else {
+                    upperLimit = centralPos - 1;
+                }
+            }
+        }
+        return pos;
+    }
+
     public void updateVector(int datum, int pos)
     {
         vec[pos] = datum;

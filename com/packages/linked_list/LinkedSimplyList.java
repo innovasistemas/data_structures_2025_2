@@ -3,12 +3,13 @@ package com.packages.linked_list;
 public class LinkedSimplyList 
 {
     public Node head;
+    public Node last;
 
     public LinkedSimplyList()
     {
         head = null;
+        last = null;
     }
-
 
     public void createBeginLSL(int datum)
     {
@@ -16,6 +17,19 @@ public class LinkedSimplyList
         newNode.info = datum;
         newNode.link = head;
         head = newNode;
+    }
+
+    public void createEndLSL(int datum)
+    {
+        Node mem = new Node();
+        mem.info = datum;
+        mem.link = null;
+        if (head == null) {
+            head = mem;
+        } else {
+            last.link = mem;
+        }
+        last = mem;
     }
 
     public void showLSL()

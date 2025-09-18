@@ -161,6 +161,7 @@ public class MainMenu
             System.out.println("5. Eliminar");
             System.out.println("6. Insertar");
             System.out.println("7. Ordenar");
+            System.out.println("8. Búsqueda binaria");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -261,7 +262,23 @@ public class MainMenu
                     } else {
                         System.out.println("Vector vacío");
                     }
-                    break;    
+                    break; 
+                case "8":
+                    if (v.getN() > 0) {
+                        v.sortVector();
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        position = v.binarySearch(datum);
+                        if (position > -1) {
+                            System.out.println("Dato encontrado en posición " + position);
+                        } else {
+                            System.out.println(datum + " no se encuentra en el vector");
+                        }
+                    } else {
+                        System.out.println("Vector vacío");
+                    }
+                    break;
                 default:
                     System.out.println("Opción no válida");
             }
@@ -450,13 +467,14 @@ public class MainMenu
             System.out.println("       Submenú Listas Ligadas");
             System.out.println("----------------------------------");
             System.out.println("0. Regresar");
-            System.out.println("1. Agregar nodo");
+            System.out.println("1. Agregar nodo por el inicio");
             System.out.println("2. Mostrar lista");
             System.out.println("3. Buscar nodo (booleano)");
             System.out.println("4. Buscar nodo (puntero -nodo-)");
             System.out.println("5. Modificar nodo");
             System.out.println("6. Eliminar nodo");
             System.out.println("7. Insertar nodo antes");
+            System.out.println("8. Agregar nodo por el final");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -554,6 +572,12 @@ public class MainMenu
                     } else {
                         System.out.println("No hay nodos");
                     }
+                    break;
+                case "8":
+                    System.out.print("Dato: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    lsl.createEndLSL(datum);
                     break;
                 default:
                     System.out.println("Opción no válida");
