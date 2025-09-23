@@ -460,6 +460,7 @@ public class MainMenu
         int datum, datumRef;
         Node q;
         LinkedSimplyList lsl = new LinkedSimplyList();
+        CircularLinkedSimplyList lslc = new CircularLinkedSimplyList();
 
         do {
             System.out.println("");
@@ -475,6 +476,9 @@ public class MainMenu
             System.out.println("6. Eliminar nodo");
             System.out.println("7. Insertar nodo antes");
             System.out.println("8. Agregar nodo por el final");
+            System.out.println("9. Crear LSLC final");
+            System.out.println("10. Mostrar LSLC");
+            System.out.println("11. Sumar impares LSLC");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -578,6 +582,26 @@ public class MainMenu
                     datum = input.nextInt();
                     input.nextLine();
                     lsl.createEndLSL(datum);
+                    break;
+                case "9":
+                    System.out.print("Dato: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    lslc.createEndLSLC(datum);
+                    break;
+                case "10":
+                    if (lslc.head != null) {
+                        lslc.showLSLC();
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "11":
+                    if (lslc.head != null) {
+                        System.out.println("Suma impares: " + lslc.sumNonesLSLC());
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
                     break;
                 default:
                     System.out.println("Opción no válida");
