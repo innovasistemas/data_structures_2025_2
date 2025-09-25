@@ -459,8 +459,10 @@ public class MainMenu
         String option;
         int datum, datumRef;
         Node q;
+        NodeLDL t;
         LinkedSimplyList lsl = new LinkedSimplyList();
         CircularLinkedSimplyList lslc = new CircularLinkedSimplyList();
+        LinkedDoubleList ldl = new LinkedDoubleList();
 
         do {
             System.out.println("");
@@ -479,6 +481,12 @@ public class MainMenu
             System.out.println("9. Crear LSLC final");
             System.out.println("10. Mostrar LSLC");
             System.out.println("11. Sumar impares LSLC");
+            System.out.println("12. Agregar nodo inicio LDL");
+            System.out.println("13. Mostrar LDL");
+            System.out.println("14. Buscar LDL");
+            System.out.println("15. Modificar LDL");
+            System.out.println("16. Eliminar LDL");
+            System.out.println("17. Insertar después LDL");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -599,6 +607,88 @@ public class MainMenu
                 case "11":
                     if (lslc.head != null) {
                         System.out.println("Suma impares: " + lslc.sumNonesLSLC());
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "12":
+                    System.out.print("Dato: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    ldl.createBeginLDL(datum);
+                    break;
+                case "13":
+                    if (ldl.head != null) {
+                        ldl.showLDL();
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "14":
+                    if (ldl.head != null) {
+                        System.out.print("Dato a buscar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        t = ldl.searchNodeLDL(datum);
+                        if (t != null ) {
+                            System.out.println("El dato está en la LDL en la dirección " + t);
+                        } else {
+                            System.out.println("El dato no está en la LDL");
+                        }
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "15":
+                    if (ldl.head != null) {
+                        System.out.print("Dato a modificar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        t = ldl.searchNodeLDL(datum);
+                        if (t != null) {
+                            System.out.print("Nuevo dato: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            ldl.updateNodeLDL(t, datum);
+                            System.out.println("El nodo se actualizó");
+                        } else {
+                            System.out.println("El dato no está en la LSL");
+                        }
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "16":
+                    if (ldl.head != null) {
+                        System.out.print("Dato a eliminar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        t = ldl.searchNodeLDL(datum);
+                        if (t != null) {
+                            ldl.deleteNodeLDL(t);
+                            System.out.print("Nodo eliminado");
+                        } else {
+                            System.out.println("El dato no está en la LDL");
+                        }
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
+                case "17":
+                    if (ldl.head != null) {
+                        System.out.print("Dato de referencia: ");
+                        datumRef = input.nextInt();
+                        input.nextLine();
+                        t = ldl.searchNodeLDL(datumRef);
+                        if (t != null) {
+                            System.out.print("Dato a insertar: ");
+                            datum = input.nextInt();
+                            input.nextLine();
+                            ldl.insertAfterNodeLDL(t, datum);
+                            System.out.print("Nodo insertado");
+                        } else {
+                            System.out.println("El dato de referencia no está en la LDL");
+                        }
                     } else {
                         System.out.println("No hay nodos");
                     }
