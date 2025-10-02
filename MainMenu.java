@@ -1,8 +1,10 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 import com.packages.string_java.*;
 import com.packages.arrays.*;
 import com.packages.linked_list.*;
+import com.packages.stack_queue.*;
 
 
 public class MainMenu 
@@ -72,6 +74,9 @@ public class MainMenu
                     break;
                 case "5":
                     menuLinkedList();
+                    break;
+                case "6":
+                    menuStackQueue();
                     break;
                 default:
                     System.out.println();
@@ -691,6 +696,57 @@ public class MainMenu
                         }
                     } else {
                         System.out.println("No hay nodos");
+                    }
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+    public static void menuStackQueue()
+    {
+        String option;
+        int datum;
+        Stacks s = new Stacks();
+
+        do {
+            System.out.println("");
+            System.out.println("----------------------------------");
+            System.out.println("       Submenú Pilas y Colas");
+            System.out.println("----------------------------------");
+            System.out.println("0. Regresar");
+            System.out.println("1. Apilar");
+            System.out.println("2. Mostrar");
+            System.out.println("3. Desapilar");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    if (s.TOP < s.MAX) {
+                        System.out.print("Dato a apilar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        s.stacking(datum);
+                    } else {
+                        System.out.println("Pila: desbordamiento");
+                    }
+                    break;
+                case "2":
+                    if (s.TOP > 0) {
+                        s.showStack();
+                    } else {
+                        System.out.println("Pila vacía");
+                    }
+                    break;
+                case "3":
+                    if (s.TOP > 0) {
+                        System.out.println("Elemento desapilado: " + s.unstacking());
+                    } else {
+                        System.out.println("Pila vacía: subdesbordamiento");
                     }
                     break;
                 default:
