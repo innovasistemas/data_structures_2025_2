@@ -312,6 +312,7 @@ public class MainMenu
             System.out.println("8. Promedio columna");
             System.out.println("9. Varianza columna");
             System.out.println("10. Desviación columna");
+            System.out.println("11. Suma Triangular Superior");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -400,6 +401,13 @@ public class MainMenu
                         numberColumns = input.nextInt();
                         input.nextLine();
                         System.out.println("Desviación columna " + numberColumns + ": " + m.desviation(numberColumns));
+                    } else {
+                        System.out.println("Tamaño de la matriz no válido para esta operación");
+                    }
+                    break;
+                case "11":
+                    if (m.getM() > 0 && m.getM() == m.getN()) {
+                        System.out.println(m.sumTriangularSuper());
                     } else {
                         System.out.println("Tamaño de la matriz no válido para esta operación");
                     }
@@ -708,6 +716,7 @@ public class MainMenu
         String option;
         int datum;
         Stacks s = new Stacks();
+        Queues q = new Queues();
 
         do {
             System.out.println("");
@@ -716,8 +725,11 @@ public class MainMenu
             System.out.println("----------------------------------");
             System.out.println("0. Regresar");
             System.out.println("1. Apilar");
-            System.out.println("2. Mostrar");
+            System.out.println("2. Mostrar pila");
             System.out.println("3. Desapilar");
+            System.out.println("4. Encolar");
+            System.out.println("5. Mostrar cola");
+            System.out.println("6. Desencolar");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -746,6 +758,30 @@ public class MainMenu
                         System.out.println("Elemento desapilado: " + s.unstacking());
                     } else {
                         System.out.println("Pila vacía: subdesbordamiento");
+                    }
+                    break;
+                case "4":
+                    if (q.LAST < q.MAX) {
+                        System.out.print("Dato a encolar: ");
+                        datum = input.nextInt();
+                        input.nextLine();
+                        q.push(datum);
+                    } else {
+                        System.out.println("Cola: desbordamiento");
+                    }
+                    break;
+                case "5":
+                    if (q.LAST > 0) {
+                        q.showQueue();
+                    } else {
+                        System.out.println("Cola vacía");
+                    }
+                    break;
+                case "6":
+                    if (q.LAST > 0) {
+                        System.out.println("Elemento desencolado: " + q.pop());
+                    } else {
+                        System.out.println("Cola vacía: subdesbordamiento");
                     }
                     break;
                 default:

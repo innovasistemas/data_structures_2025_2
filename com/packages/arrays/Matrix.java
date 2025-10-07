@@ -86,6 +86,18 @@ public class Matrix
         }
     }
 
+    public int sumTriangularSuper()
+    {
+        int s = 0;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                s += mat[i][j];
+            }
+            System.out.println();
+        }
+        return s;
+    }
+
     public void triangleSup()
     {
         int f = m % 2 == 0 ? m / 2 - 1: m / 2;
