@@ -130,5 +130,14 @@ public class LinkedSimplyList
         }
         return sw;
     }
+
+    public int squareRecursive(Node h)
+    {
+        if (h == null) {
+            return 0;
+        } else {
+            return (int) Math.pow(h.info, 2) + squareRecursive(h.link);
+        }
+    }
     
 }

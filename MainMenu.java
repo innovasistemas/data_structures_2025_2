@@ -4,7 +4,7 @@ import com.packages.string_java.*;
 import com.packages.arrays.*;
 import com.packages.linked_list.*;
 import com.packages.stack_queue.*;
-
+import com.packages.recursitivy.*;
 
 public class MainMenu 
 {
@@ -76,6 +76,9 @@ public class MainMenu
                     break;
                 case "6":
                     menuStackQueue();
+                    break;
+                case "7":
+                    menuRecursivity();
                     break;
                 default:
                     System.out.println();
@@ -499,6 +502,7 @@ public class MainMenu
             System.out.println("15. Modificar LDL");
             System.out.println("16. Eliminar LDL");
             System.out.println("17. Insertar después LDL");
+            System.out.println("18. Suma cuadrados recursiva (LSL)");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -705,6 +709,13 @@ public class MainMenu
                         System.out.println("No hay nodos");
                     }
                     break;
+                case "18":
+                    if (lsl.head != null) {
+                        System.out.print("Suma cuadrados: " + lsl.squareRecursive(lsl.head));
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
                 default:
                     System.out.println("Opción no válida");
             }
@@ -783,6 +794,50 @@ public class MainMenu
                     } else {
                         System.out.println("Cola vacía: subdesbordamiento");
                     }
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+    public static void menuRecursivity()
+    {
+        String option;
+        int datum;
+
+        do {
+            System.out.println("");
+            System.out.println("----------------------------------");
+            System.out.println("       Submenú Recursividad");
+            System.out.println("----------------------------------");
+            System.out.println("0. Regresar");
+            System.out.println("1. Factorial");
+            System.out.println("2. Sumatoria");
+            System.out.println("3. Fibonacci");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    System.out.print("Dato n: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    System.out.println("n! = " + Recursion.factorialRecursive(datum));
+                    break;
+                case "2":
+                    System.out.print("Dato n: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    System.out.println("sum(1, n) = " + Recursion.sumNaturalsRecursive(datum));
+                    break;
+                case "3":
+                    System.out.print("Dato n: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    System.out.println("Fibonacci(n) = " + Recursion.fibonacciRecursive(datum));
                     break;
                 default:
                     System.out.println("Opción no válida");
