@@ -139,5 +139,13 @@ public class LinkedSimplyList
             return (int) Math.pow(h.info, 2) + squareRecursive(h.link);
         }
     }
+
+    public void showLSLRecursive(Node h)
+    {
+        if (h != null) {
+            System.out.println(h.info);
+            showLSLRecursive(h.link);
+        }
+    } 
     
 }

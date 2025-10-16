@@ -503,6 +503,7 @@ public class MainMenu
             System.out.println("16. Eliminar LDL");
             System.out.println("17. Insertar después LDL");
             System.out.println("18. Suma cuadrados recursiva (LSL)");
+            System.out.println("19. Mostrar LSL recursiva");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -716,6 +717,13 @@ public class MainMenu
                         System.out.println("No hay nodos");
                     }
                     break;
+                case "19":
+                    if (lsl.head != null) {
+                        lsl.showLSLRecursive(lsl.head);
+                    } else {
+                        System.out.println("No hay nodos");
+                    }
+                    break;
                 default:
                     System.out.println("Opción no válida");
             }
@@ -804,7 +812,8 @@ public class MainMenu
     public static void menuRecursivity()
     {
         String option;
-        int datum;
+        int datum, a, b;
+        double m, x;
 
         do {
             System.out.println("");
@@ -815,6 +824,8 @@ public class MainMenu
             System.out.println("1. Factorial");
             System.out.println("2. Sumatoria");
             System.out.println("3. Fibonacci");
+            System.out.println("4. Capital");
+            System.out.println("5. MCD iterativo/recursivo");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -838,6 +849,28 @@ public class MainMenu
                     datum = input.nextInt();
                     input.nextLine();
                     System.out.println("Fibonacci(n) = " + Recursion.fibonacciRecursive(datum));
+                    break;
+                case "4":
+                    System.out.print("Capital inicial: ");
+                    m = input.nextDouble();
+                    input.nextLine();
+                    System.out.print("Interés: ");
+                    x = input.nextDouble();
+                    input.nextLine();
+                    System.out.print("Número años: ");
+                    datum = input.nextInt();
+                    input.nextLine();
+                    System.out.println("Capital a  " + datum + " años: " + Recursion.capital(m, x, datum));
+                    break;
+                case "5":
+                    System.out.print("Número 1: ");
+                    a = input.nextInt();
+                    input.nextLine();
+                    System.out.print("Número 2: ");
+                    b = input.nextInt();
+                    input.nextLine();
+                    System.out.println("mcd(" + a + ", " + b +") = " + Recursion.mcdIterative(a, b));
+                    System.out.println("mcd(" + a + ", " + b +") = " + Recursion.mcdRecursive(a, b));
                     break;
                 default:
                     System.out.println("Opción no válida");
