@@ -5,6 +5,7 @@ import com.packages.arrays.*;
 import com.packages.linked_list.*;
 import com.packages.stack_queue.*;
 import com.packages.recursitivy.*;
+import com.packages.trees.*;
 
 public class MainMenu 
 {
@@ -79,6 +80,9 @@ public class MainMenu
                     break;
                 case "7":
                     menuRecursivity();
+                    break;
+                case "8":
+                    menuTrees();
                     break;
                 default:
                     System.out.println();
@@ -871,6 +875,58 @@ public class MainMenu
                     input.nextLine();
                     System.out.println("mcd(" + a + ", " + b +") = " + Recursion.mcdIterative(a, b));
                     System.out.println("mcd(" + a + ", " + b +") = " + Recursion.mcdRecursive(a, b));
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } while (!option.equals("0"));
+    }
+
+    public static void menuTrees()
+    {
+        String option;
+        Tree tree = new Tree();
+        
+        do {
+            System.out.println("");
+            System.out.println("--------------------------------");
+            System.out.println("       Submenú Árboles");
+            System.out.println("--------------------------------");
+            System.out.println("0. Regresar");
+            System.out.println("1. Crear árbol");
+            System.out.println("2. Recorrido preorden");
+            System.out.println("3. Recorrido inorden");
+            System.out.println("4. Recorrido postorden");
+            System.out.print("Ingrese su opción: ");
+            option = input.nextLine();
+
+            switch (option) {
+                case "0":
+                    break;
+                case "1":
+                    tree.root = new NodeTree();
+                    tree.loadNode(tree.root);
+                    break;
+                case "2":
+                    if (tree.root != null) {
+                        tree.preorder(tree.root);
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "3":
+                    if (tree.root != null) {
+                        tree.inorder(tree.root);
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "4":
+                    if (tree.root != null) {
+                        tree.postorder(tree.root);
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
                     break;
                 default:
                     System.out.println("Opción no válida");
