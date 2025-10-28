@@ -897,6 +897,11 @@ public class MainMenu
             System.out.println("2. Recorrido preorden");
             System.out.println("3. Recorrido inorden");
             System.out.println("4. Recorrido postorden");
+            System.out.println("5. Contar nodos");
+            System.out.println("6. Contar hojas");
+            System.out.println("7. Contar nodos interiores");
+            System.out.println("8. Promedio nodos impares");
+            System.out.println("9. Mayor nodo");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -924,6 +929,27 @@ public class MainMenu
                 case "4":
                     if (tree.root != null) {
                         tree.postorder(tree.root);
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "5":
+                    if (tree.root != null) {
+                        System.out.println("Total nodos: " + tree.countNodes(tree.root));
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "6":
+                    if (tree.root != null) {
+                        System.out.println("Total hojas: " + tree.countNoLeaves(tree.root));
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "9":
+                    if (tree.root != null) {
+                        System.out.println("Mayor nodo: " + tree.maxNode(tree.root));
                     } else {
                         System.out.println("Árbol vacío");
                     }
