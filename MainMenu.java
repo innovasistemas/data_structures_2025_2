@@ -902,6 +902,7 @@ public class MainMenu
             System.out.println("7. Contar nodos interiores");
             System.out.println("8. Promedio nodos impares");
             System.out.println("9. Mayor nodo");
+            System.out.println("10. Árbol a vector");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -950,6 +951,19 @@ public class MainMenu
                 case "9":
                     if (tree.root != null) {
                         System.out.println("Mayor nodo: " + tree.maxNode(tree.root));
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "10":
+                    if (tree.root != null) {
+                        int t = tree.countNodes(tree.root);
+                        int vec[] = new int[t];
+                        int pos[] = {0};
+                        tree.treeToArray(tree.root, vec, pos);
+                        for (int i = 0; i < t; i++) {
+                            System.out.print(vec[i] + " | ");
+                        }
                     } else {
                         System.out.println("Árbol vacío");
                     }

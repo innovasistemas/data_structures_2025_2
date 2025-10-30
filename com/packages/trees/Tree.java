@@ -81,6 +81,20 @@ public class Tree
         }
     }
 
+    public int countLeaves(NodeTree node)
+    {
+        int c = 0;
+        if (node != null) {
+            if (node.lb == null && node.rb == null) {
+                System.out.println("Hoja: " + node.info);
+                c = 1;
+            } 
+            return c + countLeaves(node.lb) + countLeaves(node.rb);
+        } else {
+            return 0;
+        }
+    }
+
     public int countNoLeaves(NodeTree node)
     {
         if (node != null) {
@@ -105,5 +119,15 @@ public class Tree
             if (node.info > m) m = node.info;
         }
         return m;
+    }
+
+    public void treeToArray(NodeTree node, int v[], int pos[])
+    {
+        if (node != null) {
+            v[pos[0]] = node.info;
+            pos[0]++;
+            treeToArray(node.lb, v, pos);
+            treeToArray(node.rb, v, pos);
+        }
     }
 }
