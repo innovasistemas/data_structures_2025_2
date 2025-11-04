@@ -7,12 +7,11 @@ public class Tree
     public Scanner input = new Scanner(System.in);
     public NodeTree root;
 
-    public Tree()
-    {
+    public Tree() {
         root = null;
     }
 
-    public void preorder(NodeTree r)
+    public void preorder(NodeTree r) 
     {
         if (r != null) {
             System.out.println(r.info);
@@ -21,7 +20,7 @@ public class Tree
         }
     }
 
-    public void inorder(NodeTree r)
+    public void inorder(NodeTree r) 
     {
         if (r != null) {
             inorder(r.lb);
@@ -30,7 +29,7 @@ public class Tree
         }
     }
 
-    public void postorder(NodeTree r)
+    public void postorder(NodeTree r) 
     {
         if (r != null) {
             postorder(r.lb);
@@ -39,7 +38,7 @@ public class Tree
         }
     }
 
-    public void loadNode(NodeTree r)
+    public void loadNode(NodeTree r) 
     {
         // r es un nodo ya creado distinto null
         NodeTree other;
@@ -51,7 +50,7 @@ public class Tree
 
         System.out.print("¿Agregar nodos por la izquierda de " + r.info + "?[s/?]: ");
         resp = input.nextLine().toLowerCase();
-        
+
         if (resp.equals("s")) {
             other = new NodeTree();
             r.lb = other;
@@ -72,7 +71,7 @@ public class Tree
         }
     }
 
-    public int countNodes(NodeTree node)
+    public int countNodes(NodeTree node) 
     {
         if (node != null) {
             return 1 + countNodes(node.lb) + countNodes(node.rb);
@@ -81,47 +80,50 @@ public class Tree
         }
     }
 
-    public int countLeaves(NodeTree node)
+    public int countLeaves(NodeTree node) 
     {
         int c = 0;
         if (node != null) {
             if (node.lb == null && node.rb == null) {
                 System.out.println("Hoja: " + node.info);
                 c = 1;
-            } 
+            }
             return c + countLeaves(node.lb) + countLeaves(node.rb);
         } else {
             return 0;
         }
     }
 
-    public int countNoLeaves(NodeTree node)
+    public int countNoLeaves(NodeTree node) 
     {
         if (node != null) {
             if (node.lb == null && node.rb == null) {
                 return 0;
             } else {
                 return 1 + countNoLeaves(node.lb) + countNoLeaves(node.rb);
-            } 
+            }
         } else {
             return 0;
         }
     }
 
-    public int maxNode(NodeTree node)
+    public int maxNode(NodeTree node) 
     {
         int m, mLeft, mRight;
         m = mLeft = mRight = Integer.MIN_VALUE;
         if (node != null) {
-            if (node.lb != null) mLeft = maxNode(node.lb);
-            if (node.rb != null) mRight = maxNode(node.rb);
+            if (node.lb != null)
+                mLeft = maxNode(node.lb);
+            if (node.rb != null)
+                mRight = maxNode(node.rb);
             m = mLeft > mRight ? mLeft : mRight;
-            if (node.info > m) m = node.info;
+            if (node.info > m)
+                m = node.info;
         }
         return m;
     }
 
-    public void treeToArray(NodeTree node, int v[], int pos[])
+    public void treeToArray(NodeTree node, int v[], int pos[]) 
     {
         if (node != null) {
             v[pos[0]] = node.info;
@@ -130,4 +132,50 @@ public class Tree
             treeToArray(node.rb, v, pos);
         }
     }
+
+    public void searchBinary(NodeTree node, int datum) 
+    {
+        if (node != null) {
+            if (datum < node.info) {
+                searchBinary(node.lb, datum);
+            } else if (datum > node.info) {
+                searchBinary(node.rb, datum);
+            } else {
+                System.out.println("Nodo encontrado en el árbol");
+            }
+        } else {
+            System.out.println("Nodo no encontrado en el árbol");
+        }
+    }
+
+public void insertBinary(NodeTree node, int datum)
+{
+    NodeTree p;
+    if (datum < node.info) {
+        if (node.lb == null) {
+            p = new NodeTree();
+            p.info = datum;
+            p.lb = null;
+            p.rb = null;
+            node.lb = p;
+        } else {
+            insertBinary(node.lb, datum);
+        }
+    } else if (datum > node.info) {
+        if (node.rb == null) {
+            p = new NodeTree();
+            p.info = datum;
+            p.lb = null;
+            p.rb = null;
+            node.rb = p;
+        } else {
+            insertBinary(node.rb, datum);
+        }
+    } else {
+        System.out.println("El nodo ya se encuentra en el árbol");
+    }
+}
+
+
+
 }
