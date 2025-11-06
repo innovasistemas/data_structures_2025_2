@@ -148,33 +148,64 @@ public class Tree
         }
     }
 
-public void insertBinary(NodeTree node, int datum)
-{
-    NodeTree p;
-    if (datum < node.info) {
-        if (node.lb == null) {
-            p = new NodeTree();
-            p.info = datum;
-            p.lb = null;
-            p.rb = null;
-            node.lb = p;
+    public void insertBinary(NodeTree node, int datum)
+    {
+        NodeTree p;
+        if (datum < node.info) {
+            if (node.lb == null) {
+                p = new NodeTree();
+                p.info = datum;
+                p.lb = null;
+                p.rb = null;
+                node.lb = p;
+            } else {
+                insertBinary(node.lb, datum);
+            }
+        } else if (datum > node.info) {
+            if (node.rb == null) {
+                p = new NodeTree();
+                p.info = datum;
+                p.lb = null;
+                p.rb = null;
+                node.rb = p;
+            } else {
+                insertBinary(node.rb, datum);
+            }
         } else {
-            insertBinary(node.lb, datum);
+            System.out.println("El nodo ya se encuentra en el árbol");
         }
-    } else if (datum > node.info) {
-        if (node.rb == null) {
-            p = new NodeTree();
-            p.info = datum;
-            p.lb = null;
-            p.rb = null;
-            node.rb = p;
-        } else {
-            insertBinary(node.rb, datum);
-        }
-    } else {
-        System.out.println("El nodo ya se encuentra en el árbol");
     }
-}
+
+    public void deleteBinary(NodeTree node, int datum)
+    {
+        if (node != null) {
+            if (datum < node.info) {
+                deleteBinary(node.lb, datum);
+            } else if (datum > node.info) {
+                deleteBinary(node.rb, datum);
+            } else {
+                NodeTree q = node;
+                if (q.lb == null) {
+                    node = q.rb;
+                } else if (q.rb == null) {
+                    node = q.lb;
+                } else {
+                    NodeTree aux1 = q.lb;
+                    NodeTree aux2 = aux1;
+                    while (aux1.rb != null) {
+                        aux2 = aux1;
+                        aux1 = aux1.rb;
+                    }
+                    q.info = aux1.info;
+                    q = aux1;
+                    aux2.rb = aux1.lb;
+                }
+                System.out.println("Nodo eliminado del ABB");
+            }
+        } else {
+            System.out.println("Nodo no encontrado en el ABB");
+        } 
+    }
 
 
 

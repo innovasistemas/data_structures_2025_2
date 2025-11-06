@@ -905,6 +905,7 @@ public class MainMenu
             System.out.println("10. Árbol a vector");
             System.out.println("11. Buscar ABB");
             System.out.println("12. Insertar ABB");
+            System.out.println("13. Eliminar ABB");
             System.out.print("Ingrese su opción: ");
             option = input.nextLine();
 
@@ -986,6 +987,16 @@ public class MainMenu
                         int datum = input.nextInt();
                         input.nextLine();
                         tree.insertBinary(tree.root, datum);
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "13":
+                    if (tree.root != null) {
+                        System.out.println("Nodo a eliminar: ");
+                        int datum = input.nextInt();
+                        input.nextLine();
+                        tree.deleteBinary(tree.root, datum);
                     } else {
                         System.out.println("Árbol vacío");
                     }
